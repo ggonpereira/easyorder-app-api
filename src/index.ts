@@ -1,12 +1,25 @@
 import * as dotenv from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+
 dotenv.config();
 
-import express from 'express';
+const MONGO_URL = process.env.MONGO_URL || '';
 
-const SERVER_PORT = process.env.SERVER_PORT;
+mongoose
+  .connect(MONGO_URL)
+  .then(() => {
+    const app = express();
+    const SERVER_PORT = process.env.SERVER_PORT;
 
-const app = express();
-
-app.listen(SERVER_PORT, () => {
-  console.log(`Server running at http://localhost:${SERVER_PORT} 🔥`);
-});
+    app.listen(SERVER_PORT, () => {
+      console.log(
+        `\nServer is running on http://localhost:${SERVER_PORT} 🔥\n`
+      );
+    });
+  })
+  .catch(() =>
+    console.error(
+      '\n🚨 Error connecting to Mongo, server was not started! 🚨\n'
+    )
+  );
