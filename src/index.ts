@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -14,6 +16,12 @@ mongoose
     const app = express();
     const SERVER_PORT = process.env.SERVER_PORT;
 
+    app.use(
+      '/uploads',
+      express.static(
+        path.resolve(__dirname, '..', 'uploads').replace('\\src', '')
+      )
+    );
     app.use(express.json());
     app.use(router);
 
