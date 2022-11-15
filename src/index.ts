@@ -2,6 +2,8 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
+import { router } from './router';
+
 dotenv.config();
 
 const MONGO_URL = process.env.MONGO_URL || '';
@@ -11,6 +13,9 @@ mongoose
   .then(() => {
     const app = express();
     const SERVER_PORT = process.env.SERVER_PORT;
+
+    app.use(express.json());
+    app.use(router);
 
     app.listen(SERVER_PORT, () => {
       console.log(
