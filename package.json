@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "start": "node dist",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
