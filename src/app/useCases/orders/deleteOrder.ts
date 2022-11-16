@@ -7,7 +7,7 @@ export const deleteOrder = async (req: Request, res: Response) => {
 
     await Order.findByIdAndDelete(orderId);
 
-    res.send(204);
+    res.sendStatus(204);
   } catch (error) {
     console.error(error);
     res.sendStatus(500);
