@@ -14,7 +14,7 @@
 
 <p align="center">A project created using NodeJS, TypeScript, Express, MongoDB and Multer! 👊🏼</p>
 
----
+--- 
 
 <h2>Technologies 🚀</h2>
 
