@@ -19,10 +19,11 @@ mongoose
     const app = express();
     const SERVER_PORT = process.env.SERVER_PORT;
 
-    app.use((_, res) => {
+    app.use((_, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', ALLOW_ORIGIN_VALUES);
       res.setHeader('Access-Control-Allow-Methods', ALLOW_METHODS_VALUES);
       res.setHeader('Access-Control-Allow-Headers', ALLOW_HEADERS_VALUES);
+      next();
     });
 
     app.use(
