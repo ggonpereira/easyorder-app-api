@@ -1,5 +1,5 @@
 <h4 align="center">
- <h1 align="center">EasyOrder App 🤗</h1>
+ <h1 align="center">EasyOrder App API 🤗</h1>
 </h4>
 <p align="center">
   <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/ggonpereira/easyorder-app-api" />
@@ -14,7 +14,7 @@
 
 <p align="center">A project created using NodeJS, TypeScript, Express, MongoDB and Multer! 👊🏼</p>
 
----
+--- 
 
 <h2>Technologies 🚀</h2>
 
