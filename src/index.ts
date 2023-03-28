@@ -1,8 +1,9 @@
 import path from 'node:path';
-
+import http from 'node:http';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
+import { Server } from 'socket.io';
 
 import { router } from './router';
 
@@ -13,10 +14,13 @@ const ALLOW_ORIGIN_VALUES = process.env.ALLOW_ORIGIN_VALUES || '';
 const ALLOW_METHODS_VALUES = process.env.ALLOW_METHODS_VALUES || '';
 const ALLOW_HEADERS_VALUES = process.env.ALLOW_HEADERS_VALUES || '';
 
+const app = express();
+const server = http.createServer(app);
+export const io = new Server(server);
+
 mongoose
   .connect(MONGO_URL)
   .then(() => {
-    const app = express();
     const SERVER_PORT = process.env.SERVER_PORT;
 
     app.use((_, res, next) => {
@@ -35,7 +39,7 @@ mongoose
     app.use(express.json());
     app.use(router);
 
-    app.listen(SERVER_PORT, () => {
+    server.listen(SERVER_PORT, () => {
       console.log(
         `\nServer is running on http://localhost:${SERVER_PORT} 🔥\n`
       );
